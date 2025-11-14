@@ -1,0 +1,428 @@
+body {
+    background: linear-gradient(180deg, #ffffff 0%, #dbefff 15%);
+    font-family: "Poppins", sans-serif;
+    
+}
+.nav-link {
+    font-weight: 500;
+    color: #333333;
+    font-size: 20;
+}
+.nav-link.active {
+    color: #013F8E !important;
+    font-weight: 700;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.hero-row {
+  display: flex;
+  align-items: flex-end; /* Align both columns at the bottom */
+  width: 100%;
+}
+
+.hero-img {
+    position: relative;
+    text-align: center;
+}
+
+.hero-img img {
+    width: 100%; 
+    height: auto;
+}
+
+.hero-text h5 {
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+.hero-text h1 {
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.hero-text h1 span {
+    color: #0d47a1;
+}
+
+.hero-text p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 20px;
+}
+
+.tags span {
+    margin-right: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #013F8E;
+    border: none;
+    border-radius: 40px;
+    padding: 20px 40px;
+    font-weight: bold;
+    color: #CBE7FF;
+    /* font-size: 20px; */
+}
+
+.btn-primary:hover {
+    background-color: #083272;
+}
+
+.hi-there{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Lora', serif;
+    color: #013F8E !important;
+}
+
+.name{
+    font-size: 70px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: #333333;
+    margin-bottom: 12px;
+}
+
+.ui-ux{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: #013F8E;
+    margin-top: 0px;
+}
+
+.description{
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+}
+
+.section-container {
+    padding: 30px;
+    border-radius: 8px; /* Optional: subtle rounded corners */
+    margin: auto;
+}
+h2 {
+    color: #0056b3; /* Dark blue for titles */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.about-me-text {
+    color: #333;
+    /* line-height: 1.6; */
+    font-size: 20px;
+    text-align: justify;
+    color: #333;
+}
+.about-me-text b {
+    font-weight: bold;
+}
+.skill-badge {
+    display: inline-block;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.tool-icon {
+    width: 70px; /* Size of the tool icons */
+    height: 70px;
+    margin-right: 12px;
+}
+
+.p2-color{
+    background-color: #4274B0;
+}
+
+.p3-color{
+    background-color: #6E97C7;
+}
+
+.p4-color{
+    background-color: #A4C3E3;
+}
+
+
+/* Adjust column spacing for responsiveness */
+@media (max-width: 767.98px) {
+    .section-container {
+        padding: 15px;
+    }
+    .col-md-6:first-child {
+        margin-bottom: 30px; /* Add space between sections on small screens */
+    }
+}
+
+.experience-item {
+    margin-bottom: 30px;
+}
+
+/* Custom styling for the description column with the vertical line */
+
+/* Text styling */
+.job-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    line-height: 1.2;
+}
+.job-company, .job-date {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.job-description {
+    color: black;
+    font-size: 20px;
+}
+
+/* Responsive adjustment for small screens (sm and below) */
+@media (max-width: 767.98px) {
+    .job-description-column {
+        border-left: none; /* Remove vertical line on small screens */
+        padding-left: 0;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed #ccc; /* Add a horizontal separator */
+    }
+}
+
+/* .section-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0; /* Adjust padding as needed */
+/* } */ 
+.info-card {
+    background-color: #CBE7FF; /* Light blue background for the cards */
+    border-radius: 8px;
+    padding: 24px;
+    height: 100%; /* Ensure cards in a row have equal height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+}
+.info-card-title {
+    color: #013F8E; /* Dark blue for card titles */
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-family: 'Lora', serif;
+}
+.card-content {
+    color: black;
+    line-height: 1.5;
+    font-size: 20px;
+}
+.card-content b {
+    font-weight: bold;
+    display: block; /* Make bold text appear on its own line */
+    font-size: 20px;
+}
+.card-content span {
+    display: block; /* Ensure company/date/GPA each appear on a new line */
+    color: black;
+    font-size: 20px;
+}
+
+/* Image Styling (assuming a circular image with blue background) */
+.profile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%; /* Take full height of its column */
+    min-height: 300px; /* Minimum height for the image container */
+}
+.profile-image {
+    width: 100%; /* Adjust image size within the circle */
+    height: 100%;
+    margin-bottom: -18px;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 767.98px) {
+    .info-card {
+        margin-bottom: 20px; /* Add space between stacked cards */
+    }
+    .profile-image-container {
+        margin-top: 30px; /* Space above image when stacked */
+        min-height: auto;
+    }
+}
+
+.heading-2{
+    font-family: 'Lora', serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.title-2 {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+.p1-color{
+    color: #013F8E;
+}
+
+.margin-top-24{
+    margin-top: 24px;
+}
+
+.project-desc {
+    font-size: 20px;
+    color: black;
+}
+
+.sub-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: #002D72;
+}
+
+.color-row {
+    gap: 20px;
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.color-box {
+    width: 100%;      
+    padding-top: 100%;  
+    border-radius: 12px;
+}
+
+.color-label {
+    margin-top: 6px;
+    background: white;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #A7A7A7;
+    display: inline-block;
+}
+
+.typo-heading-l {
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 6px;
+    font-family: 'Inter', sans-serif;
+    line-height: 0.8; /* reduce vertical spacing */
+}
+.typo-heading-m {
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 6px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1; /* reduce vertical spacing */
+}
+
+.typo-heading-l span,
+.typo-heading-m span,
+.typo-body-l span,
+.typo-body-m span {
+    font-size: 12px;
+    color: #A7A7A7;
+}
+
+.typo-body-l {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.typo-body-m {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* RIGHT AREA */
+.project-image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.carousel-btn {
+    width: 35px;
+    height: 35px;
+    background: #A4C3E3;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #013F8E;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.bi {
+    font-weight: bold; /* not enough alone */
+    -webkit-text-stroke: 1px currentColor;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 55, 130, 0.35);
+}
+
+.footer-name {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 12px;
+}
+
+.footer-year {
+    color: #333;
+    font-size: 18px;
+}
+
+.slanted-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden; /* keeps the rounded corners */
+}
+
+/* background only */
+.slanted-bg {
+    transform: translateY(400px); /* ⬅️ Move down */
+    position: absolute;
+    inset: 0;
+    background: #F1F9FF; /* your background color */
+    z-index: 1;
+
+    /* slanted shape ONLY for the background */
+    clip-path: polygon(
+        0 0%,      /* Point 1 → LEFT side, TOP */
+        100% 17%,  /* Point 2 → RIGHT side, slight DOWN */
+        100% 100%, /* Point 3 → RIGHT side, BOTTOM */
+        0 100%     /* Point 4 → LEFT side, BOTTOM */
+    );
+}
+
+/* real content goes above the clipped background */
+.slanted-content {
+    position: relative;
+    z-index: 2;
+}
