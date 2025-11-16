@@ -14,13 +14,23 @@
         <div class="container justify-content-center">
             <ul class="navbar-nav gap-5">
                 <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Resume</a>
+                    <a class="nav-link" 
+                    href="https://drive.google.com/file/d/17qMuUWh03te9Xl4NUewiZajbnyc0uJJa/view?usp=sharing" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Resume
+                    </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">LinkedIn</a>
+                    <a class="nav-link" 
+                    href="https://www.linkedin.com/in/tata-azkia-azzahra/" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    LinkedIn
+                    </a>
                 </li>
             </ul>
         </div>
@@ -48,7 +58,12 @@
                     <span>🎨  Design Thinker</span>
                     <span>🌍  Problem Solver</span>
                 </div>
-                <button class="btn btn-primary align-self-start align-self-md-none">Contact Me!</button>
+                <a href="mailto:tataazkia123@gmail.com">
+                    <button class="btn btn-primary align-self-start align-self-md-none">
+                        Contact Me!
+                    </button>
+                </a>
+
             </div>
         </div>
     </section>
