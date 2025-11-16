@@ -31,24 +31,24 @@
         <div class="row flex-column-reverse flex-md-row align-items-md-end g-4">
             <!-- IMAGE column: make the column a flex container and align image to column bottom -->
             <div class="col-12 col-md-6 d-flex align-items-end justify-content-center hero-img">
-            <img src="{{ asset('assets/profile_picture.png') }}" alt="Profile"
-                class="img-fluid profile-image" />
+                <img src="{{ asset('assets/profile_picture.png') }}" alt="Profile"
+                    class="img-fluid profile-image" />
             </div>
 
             <!-- TEXT column: make column a flex column and push content to bottom -->
             <div class="col-12 col-md-5 d-flex flex-column justify-content-end hero-text text-center text-md-start">
-            <h1 class="hi-there">Hi there!👋🏻</h1>
-            <h1 class="name">I’m Tata Azkia Azzahra, <br /><span class="ui-ux">a UI/UX Designer</span></h1>
-            <p class="description">
-                A passionate UI/UX Designer who transforms ideas into intuitive,
-                human-centered, and visually engaging experiences.
-            </p>
-            <div class="tags mb-3">
-                <span>💡 Curious Mind</span>
-                <span>🎨 Design Thinker</span>
-                <span>🌍 Problem Solver</span>
-            </div>
-            <button class="btn btn-primary align-self-start align-self-md-none">Contact Me!</button>
+                <h1 class="hi-there">Hi there!👋🏻</h1>
+                <h1 class="name">I’m Tata Azkia Azzahra, <br /><span class="ui-ux">a UI/UX Designer</span></h1>
+                <p class="description">
+                    A passionate UI/UX Designer who transforms ideas into intuitive,
+                    human-centered, and visually engaging experiences.
+                </p>
+                <div class="tags mb-3">
+                    <span>💡 Curious Mind</span>
+                    <span>🎨  Design Thinker</span>
+                    <span>🌍  Problem Solver</span>
+                </div>
+                <button class="btn btn-primary align-self-start align-self-md-none">Contact Me!</button>
             </div>
         </div>
     </section>
@@ -75,7 +75,7 @@
                     <span class="skill-badge p4-color">Prototyping</span>
                 </div>
 
-                <h2>Tools</h2>
+                <h2 class="hi-there">Tools</h2>
                 <div>
                     <img src="{{ asset('assets/Figma.png') }}" alt="Figma Icon" class="tool-icon">
                     <img src="{{ asset('assets/Canva.png') }}" alt="Canva Icon" class="tool-icon">
@@ -131,9 +131,9 @@
 
     <div class="slanted-box">
         <div class="slanted-bg"></div>
-        <div class="slanted-content container py-5">
+        <div class="slanted-content container">
             <!-- certification -->
-            <div class="container section-container">
+            <div class="container section-container certification">
                 <div class="row g-4 align-items-start">
                     
                     <div class="col-12 col-lg-8">
@@ -256,7 +256,7 @@
             </div>
 
             <!-- Carousel Buttons -->
-            <div class="container text-center my-5">
+            <div class="container text-center mt-3 mb-5">
                 <div class="carousel-buttons d-inline-flex gap-3">
                     <button class="carousel-btn">
                         <i class="bi bi-chevron-left"></i>
@@ -277,6 +277,6 @@
         </div>
        
     </div>
-    
+    <script src="{{ asset('javascript/index.js') }}"></script>
 </body>
 </html>
