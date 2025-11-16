@@ -138,6 +138,13 @@ h2 {
     font-size: 15px;
     font-weight: 500;
 }
+
+@media (max-width: 768px) {
+    .skill-badge {
+        padding: 5px 10px !important;
+    }
+}
+
 .tool-icon {
     width: 70px; /* Size of the tool icons */
     height: 70px;
