@@ -1,11 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     function updateSlantedMargin() {
-        // Only run on smaller devices
-        if (window.innerWidth > 767.98) return;
-
         const certSection = document.querySelector(".section-container.certification");
         const slantedBg = document.querySelector(".slanted-bg");
+
+        // Only run on smaller devices
+        if (window.innerWidth > 767.98){
+            slantedBg.style.marginTop = 0 + "px";
+            return;
+        };
+
 
         if (!certSection || !slantedBg) return;
 
