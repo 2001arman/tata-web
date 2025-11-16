@@ -132,9 +132,13 @@
     <div class="slanted-box">
         <div class="slanted-bg"></div>
         <div class="slanted-content container py-5">
-             <div class="container section-container">
-                <div class="row g-4 align-items-end"> <div class="col-12 col-lg-8"> <div class="row g-4">
-                            <div class="col-12 col-md-6">
+            <!-- certification -->
+            <div class="container section-container">
+                <div class="row g-4 align-items-start">
+                    
+                    <div class="col-12 col-lg-8">
+                        <div class="row g-4 align-items-stretch">
+                            <div class="col-6 col-md-6">
                                 <div class="info-card">
                                     <h3 class="info-card-title">Certification</h3>
                                     <div class="card-content">
@@ -144,7 +148,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+
+                            <div class="col-6 col-md-6">
                                 <div class="info-card">
                                     <h3 class="info-card-title">Education</h3>
                                     <div class="card-content">
@@ -155,15 +160,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+
+                            <div class="col-6 col-md-6">
                                 <div class="info-card">
                                     <h3 class="info-card-title">Softskills</h3>
                                     <div class="card-content">
-                                        Communication, empathy, collaboration, creativity, problem-solving, critical thinking, attention to detail, time management, and adaptability.
+                                        Communication, empathy, collaboration, creativity, problem-solving,
+                                        critical thinking, attention to detail, time management, and adaptability.
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+
+                            <div class="col-6 col-md-6">
                                 <div class="info-card">
                                     <h3 class="info-card-title">Organization</h3>
                                     <div class="card-content">
@@ -173,10 +181,11 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
-                    <div class="col-12 col-lg-4"> 
+                    <div class="col-12 col-lg-4">
                         <div class="profile-image-container">
                             <img src="{{ asset('assets/profile_picture_2.png') }}" alt="Profile Picture" class="profile-image">
                         </div>
@@ -185,6 +194,7 @@
                 </div>
             </div>
 
+            <!-- projects -->
             <div class="container py-3">
                 <div class="row align-items-start">
                     
