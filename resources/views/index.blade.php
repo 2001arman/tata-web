@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/muslimah.png" type="image/x-icon">
 </head>
 <body>
     <nav class="navbar navbar-expand bg-transparent py-3">
