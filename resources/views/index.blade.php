@@ -205,52 +205,22 @@
                     </div>
 
                     <!-- RIGHT COLUMN -->
-                    <div class="col-md-9 order-1 order-md-2 mb-4 ">
-                        <img src="{{ asset('assets/terralith.png') }}" class="project-image" alt="Terralith">
+                    <div class="col-md-9 order-1 order-md-2 mb-4">
+                        <img id="project-image" src="{{ asset('assets/terralith.png') }}" class="project-image" alt="Terralith">
                     </div>
 
                     <!-- LEFT COLUMN -->
                     <div class="col-12 col-md-3 px-4 order-2 order-md-1">
-                        <h1 class="title-2 p1-color">TERRALITH</h1>
-
-                        <p class="project-desc">
+                        <h1 id="project-title" class="title-2 p1-color">TERRALITH</h1>
+                        <p id="project-desc" class="project-desc">
                             <strong>Terralith</strong> is an Android learning app designed for 10th-grade
-                            students to explore Lithosphere Dynamics independently through interactive materials,
-                            videos, and quizzes that enhance understanding and disaster awareness.
+                            students to explore Lithosphere Dynamics independently...
                         </p>
 
-                        <!-- Colors -->
-                        <h4 class="heading-2 mt-4 p1-color">Colors</h4>
-                        <div class="d-flex flex-wrap color-row">
+                        <div id="project-colors" class="d-flex flex-wrap color-row"></div>
 
-                            <div class="color-item text-start flex-fill">
-                                <div class="color-box" style="background:#001F3F; border:1px solid #001F3F;"></div>
-                                <div class="color-label">#001F3F</div>
-                            </div>
-
-                            <div class="color-item text-start flex-fill">
-                                <div class="color-box" style="background:#6A8EBB; border:1px solid #6A8EBB;"></div>
-                                <div class="color-label">#6A8EBB</div>
-                            </div>
-
-                            <div class="color-item text-start flex-fill">
-                                <div class="color-box" style="background:#B9D7EA; border:1px solid #B9D7EA;"></div>
-                                <div class="color-label">#B9D7EA</div>
-                            </div>
-
-                            <div class="color-item text-start flex-fill">
-                                <div class="color-box" style="background:#D6E6F2; border:1px solid #bfbfbf;"></div>
-                                <div class="color-label">#D6E6F2</div>
-                            </div>
-
-                        </div>
-
-                        <!-- Typography -->
                         <h4 class="heading-2 mt-4 p1-color mb-3">Typography</h4>
-                        <p class="typo-heading-l">Heading L<br><span>Size: 32px • Weight: Bold</span></p>
-                        <p class="typo-heading-m">Heading M<br><span>Size: 26px • Weight: Bold</span></p>
-                        <p class="typo-body-l">Body L<br><span>Size: 18px • Weight: Bold</span></p>
-                        <p class="typo-body-m">Body M<br><span>Size: 16px • Weight: Regular</span></p>
+                        <div id="project-typography"></div>
                     </div>
                 </div>
             </div>
