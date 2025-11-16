@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" 
-                    href="https://drive.google.com/file/d/17qMuUWh03te9Xl4NUewiZajbnyc0uJJa/view?usp=sharing" 
+                    href="https://drive.google.com/file/d/1zmFUzK9mX_zGAg1fJsIugu8EAbQ4B7e8/view?usp=sharing" 
                     target="_blank" 
                     rel="noopener noreferrer">
                     Resume
