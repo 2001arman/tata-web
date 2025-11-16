@@ -89,12 +89,12 @@
         <h1 class="hi-there">Work Experience</h1 >
 
         <div class="row experience-item">
-            <div class="col-12 col-md-4 job-details-column text-md-end">
+            <div class="col-5 col-md-4 job-details-column text-end">
                 <div class="job-title">UI/UX Designer Freelance</div>
                 <div class="job-company">Upwork</div>
                 <div class="job-date">February – May 2025</div>
             </div>
-            <div class="col-12 col-md-8 job-description-column">
+            <div class="col-7 col-md-8 job-description-column">
                 <p class="job-description">
                     Designed intuitive and responsive mobile app interfaces using Figma, ensuring usability and visual appeal. Collaborated with clients and refined designs through user feedback to enhance experience quality.
                 </p>
@@ -102,12 +102,12 @@
         </div>
 
         <div class="row experience-item">
-            <div class="col-12 col-md-4 text-md-end">
+            <div class="col-5 col-md-4 text-end">
                 <div class="job-title sub-heading">Kampus Mengajar Batch 7</div>
                 <div class="job-company">Ministry of Education, Culture, Research, and Technology</div>
                 <div class="job-date">February – June 2024</div>
             </div>
-            <div class="col-12 col-md-8 job-description-column">
+            <div class="col-7 col-md-8 job-description-column">
                 <p class="job-description">
                     Supported students' literacy, numeracy, and comprehension through interactive learning activities. Collaborated with teachers to design engaging educational media that enhanced participation, responsibility, and teamwork.
                 </p>
@@ -115,12 +115,12 @@
         </div>
 
         <div class="row experience-item">
-            <div class="col-12 col-md-4 job-details-column text-md-end">
+            <div class="col-5 col-md-4 job-details-column text-end">
                 <div class="job-title">Teaching Assistant for Cartography and Remote Sensing Practicum</div>
                 <div class="job-company">Geospatial Laboratory FIS UNY</div>
                 <div class="job-date">August 2023 – January 2024</div>
             </div>
-            <div class="col-12 col-md-8 job-description-column">
+            <div class="col-7 col-md-8 job-description-column">
                 <p class="job-description">
                     Guided students in mapping and remote sensing practices using QGIS, ArcGIS, ENVI, and field surveys. Delivered engaging theoretical and practical sessions while providing constructive feedback to improve students' technical understanding.
                 </p>

@@ -175,7 +175,7 @@ h2 {
 }
 
 .experience-item {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 /* Custom styling for the description column with the vertical line */
@@ -200,12 +200,21 @@ h2 {
 
 /* Responsive adjustment for small screens (sm and below) */
 @media (max-width: 767.98px) {
+     /* Make all text 14px */
+    .job-title,
+    .job-company,
+    .job-date,
+    .job-description {
+        font-size: 14px !important;
+    }
+
     .job-description-column {
-        border-left: none; /* Remove vertical line on small screens */
         padding-left: 0;
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px dashed #ccc; /* Add a horizontal separator */
+        text-align: justify;
+    }
+
+    .experience-item {
+        margin-bottom: 12px;
     }
 }
 
