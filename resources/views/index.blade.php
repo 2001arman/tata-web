@@ -185,7 +185,7 @@
                 </div>
             </div>
 
-            <div class="container py-5">
+            <div class="container py-3">
                 <div class="row align-items-start">
                     
                     <div class="row px-4">
@@ -195,12 +195,12 @@
                     </div>
 
                     <!-- RIGHT COLUMN -->
-                    <div class="col-md-8 order-1 order-md-2 mb-4 ">
+                    <div class="col-md-9 order-1 order-md-2 mb-4 ">
                         <img src="{{ asset('assets/terralith.png') }}" class="project-image" alt="Terralith">
                     </div>
 
                     <!-- LEFT COLUMN -->
-                    <div class="col-12 col-md-4 px-4 order-2 order-md-1">
+                    <div class="col-12 col-md-3 px-4 order-2 order-md-1">
                         <h1 class="title-2 p1-color">TERRALITH</h1>
 
                         <p class="project-desc">
@@ -214,17 +214,17 @@
                         <div class="d-flex flex-wrap color-row">
 
                             <div class="color-item text-start flex-fill">
-                                <div class="color-box" style="background:#001F3F;"></div>
+                                <div class="color-box" style="background:#001F3F; border:1px solid #001F3F;"></div>
                                 <div class="color-label">#001F3F</div>
                             </div>
 
                             <div class="color-item text-start flex-fill">
-                                <div class="color-box" style="background:#6A8EBB;"></div>
+                                <div class="color-box" style="background:#6A8EBB; border:1px solid #6A8EBB;"></div>
                                 <div class="color-label">#6A8EBB</div>
                             </div>
 
                             <div class="color-item text-start flex-fill">
-                                <div class="color-box" style="background:#B9D7EA;"></div>
+                                <div class="color-box" style="background:#B9D7EA; border:1px solid #B9D7EA;"></div>
                                 <div class="color-label">#B9D7EA</div>
                             </div>
 
