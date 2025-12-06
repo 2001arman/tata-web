@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" 
-                    href="https://drive.google.com/file/d/1zmFUzK9mX_zGAg1fJsIugu8EAbQ4B7e8/view?usp=sharing" 
+                    href="https://drive.google.com/file/d/1663yj5EWsfzBkmunu50M6purn_rzrgPK/view?usp=sharing" 
                     target="_blank" 
                     rel="noopener noreferrer">
                     Resume
@@ -108,7 +108,7 @@
             <div class="col-5 col-md-4 job-details-column text-end">
                 <div class="job-title">UI/UX Designer Freelance</div>
                 <div class="job-company">Upwork</div>
-                <div class="job-date">February – May 2025</div>
+                <div class="job-date">November 2024 – Present</div>
             </div>
             <div class="col-7 col-md-8 job-description-column">
                 <p class="job-description">
