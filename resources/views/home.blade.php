@@ -1,4 +1,6 @@
 @php
+    $skillBand = ['UX Research', 'UI Design', 'Prototyping', 'Illustration', 'Graphic Design', 'Mobile & Web Design'];
+
     $featured = [
         [
             'title' => 'Notery',
@@ -141,7 +143,7 @@
     {{-- The photo extends past its box; clip at the viewport edge so narrow widths don't scroll sideways. --}}
     <div class="overflow-x-clip"><section class="mx-auto max-w-[1080px] px-6 pt-10 pb-14 lg:pt-8 lg:pb-7">
         <div class="flex flex-col-reverse items-center gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
-            <div class="flex max-w-[480px] flex-col gap-10 text-center lg:pt-[46px] lg:text-left">
+            <div data-reveal class="flex max-w-[480px] flex-col gap-10 text-center lg:pt-[46px] lg:text-left">
                 <div class="flex flex-col gap-2.5">
                     <p class="font-display text-xl leading-7 font-bold text-primary lg:text-2xl">Hi there!👋🏻</p>
                     <h1 class="font-display text-4xl leading-[1.1] font-bold text-ink sm:text-5xl lg:text-[56px] lg:leading-[1.05]">I’m Tata Azkia Azzahra,</h1>
@@ -172,7 +174,7 @@
                 </div>
             </div>
 
-            <div class="relative aspect-[482/648] w-[280px] shrink-0 sm:w-[340px] lg:w-[400px]">
+            <div data-reveal class="relative aspect-[482/648] w-[280px] shrink-0 sm:w-[340px] lg:w-[400px]">
                 <img src="{{ asset('assets/hero-photo.webp') }}" alt="Tata Azkia Azzahra"
                      width="553" height="601"
                      class="absolute top-[3.7%] left-[-5.187%] w-[114.73%] max-w-none">
@@ -187,15 +189,20 @@
     </section></div>
 
     {{-- ───────────────────────── Skills band ───────────────────────── --}}
-    <section class="no-scrollbar overflow-x-auto bg-primary" aria-label="Areas of practice">
-        <div class="mx-auto flex h-12 w-max items-center gap-[18px] px-6 text-white">
-            @foreach (['UX Research', 'UI Design', 'Prototyping', 'Illustration', 'Graphic Design', 'Mobile & Web Design'] as $skill)
-                @unless ($loop->first)
-                    <svg class="size-[18px] shrink-0 fill-white" viewBox="0 0 18 18" aria-hidden="true">
-                        <use href="#star"/>
-                    </svg>
-                @endunless
-                <span class="font-display text-lg leading-[1.2] font-bold whitespace-nowrap">{{ $skill }}</span>
+    {{-- Five identical copies: the keyframe shifts the track by exactly one copy (-20%), so the loop is
+         seamless, and the other four (about 4000px) keep the band full on very wide screens.
+         With reduced motion it falls back to a single row that can be swiped. --}}
+    <section class="overflow-hidden bg-primary motion-reduce:no-scrollbar motion-reduce:overflow-x-auto" aria-label="Areas of practice">
+        <div class="flex h-12 w-max animate-marquee items-center text-white hover:[animation-play-state:paused] motion-reduce:mx-auto motion-reduce:animate-none motion-reduce:px-6">
+            @foreach (range(1, 5) as $copy)
+                <div @class(['flex shrink-0 items-center gap-[18px] pr-[18px] motion-reduce:pr-0', 'motion-reduce:hidden' => ! $loop->first]) @unless ($loop->first) aria-hidden="true" @endunless>
+                    @foreach ($skillBand as $skill)
+                        <span class="font-display text-lg leading-[1.2] font-bold whitespace-nowrap">{{ $skill }}</span>
+                        <svg @class(['size-[18px] shrink-0 fill-white', 'motion-reduce:hidden' => $loop->last]) viewBox="0 0 18 18" aria-hidden="true">
+                            <use href="#star"/>
+                        </svg>
+                    @endforeach
+                </div>
             @endforeach
         </div>
     </section>
@@ -206,13 +213,13 @@
              and both columns bottom-align — as laid out in Figma. --}}
         <div class="grid items-end gap-6 lg:grid-cols-2">
             <div class="flex flex-col">
-                <div class="inline-flex w-fit items-center gap-2 rounded-full bg-azure px-5 py-2.5">
+                <div data-reveal class="inline-flex w-fit items-center gap-2 rounded-full bg-azure px-5 py-2.5">
                     <svg class="size-[18px] shrink-0 fill-white" viewBox="0 0 18 18" aria-hidden="true"><use href="#star"/></svg>
                     <span class="text-sm leading-5 font-medium text-white">Projects</span>
                 </div>
-                <h2 class="mt-5 font-display text-4xl leading-[1.1] font-bold text-black sm:text-5xl lg:text-[56px] lg:leading-[1.05]">Selected Work</h2>
+                <h2 data-reveal class="mt-5 font-display text-4xl leading-[1.1] font-bold text-black sm:text-5xl lg:text-[56px] lg:leading-[1.05]">Selected Work</h2>
 
-                <article class="relative mt-4 flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[0]['card'] }}">
+                <article data-reveal class="relative mt-4 flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[0]['card'] }}">
                     <img src="{{ asset($featured[0]['image']) }}" alt="{{ $featured[0]['title'] }} preview"
                          class="w-full rounded-[20px] {{ $featured[0]['ratio'] }} object-cover">
                     <h3 class="mt-3.5 font-display text-[30px] leading-9 font-bold {{ $featured[0]['text'] }}">{{ $featured[0]['title'] }}</h3>
@@ -223,7 +230,7 @@
                 </article>
             </div>
 
-            <article class="relative flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[1]['card'] }}">
+            <article data-reveal class="relative flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[1]['card'] }}">
                 <img src="{{ asset($featured[1]['image']) }}" alt="{{ $featured[1]['title'] }} preview"
                      class="w-full rounded-[20px] {{ $featured[1]['ratio'] }} object-cover">
                 <h3 class="mt-3.5 font-display text-[30px] leading-9 font-bold {{ $featured[1]['text'] }}">{{ $featured[1]['title'] }}</h3>
@@ -237,7 +244,7 @@
         {{-- Nine project cards --}}
         <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($projects as $project)
-                <article class="relative flex flex-col rounded-[24px] px-3.5 pt-7 pb-3.5 {{ $project['card'] }}">
+                <article data-reveal class="relative flex flex-col rounded-[24px] px-3.5 pt-7 pb-3.5 {{ $project['card'] }}">
                     <img src="{{ asset($project['image']) }}" alt="{{ $project['title'] }} preview"
                          class="aspect-[304/209] w-full rounded-[20px] object-cover">
                     <h3 class="mt-2.5 max-w-[200px] font-display text-xl leading-6 font-bold {{ $project['text'] }}">{{ $project['title'] }}</h3>
@@ -252,15 +259,15 @@
 
     {{-- ───────────────────────── Work experience ───────────────────────── --}}
     <section id="work" class="mx-auto max-w-[1080px] px-6 py-10">
-        <div class="inline-flex items-center gap-2 rounded-full bg-azure-soft px-5 py-2.5">
+        <div data-reveal class="inline-flex items-center gap-2 rounded-full bg-azure-soft px-5 py-2.5">
             <svg class="size-[18px] shrink-0 fill-white" viewBox="0 0 18 18" aria-hidden="true"><use href="#star"/></svg>
             <span class="text-sm leading-5 font-medium text-white">Work Experience</span>
         </div>
-        <h2 class="mt-5 max-w-[600px] font-display text-4xl leading-[1.1] font-bold text-black sm:text-5xl lg:text-[56px] lg:leading-[1.05]">Designing across different challenges</h2>
+        <h2 data-reveal class="mt-5 max-w-[600px] font-display text-4xl leading-[1.1] font-bold text-black sm:text-5xl lg:text-[56px] lg:leading-[1.05]">Designing across different challenges</h2>
 
         <div class="mt-10">
             @foreach ($experience as $job)
-                <div class="grid gap-2 py-5 lg:grid-cols-[220px_1fr] lg:gap-x-6 lg:gap-y-0 lg:py-0">
+                <div data-reveal class="grid gap-2 py-5 lg:grid-cols-[220px_1fr] lg:gap-x-6 lg:gap-y-0 lg:py-0">
                     <p class="leading-6 font-bold text-black lg:text-right">{{ $job['date'] }}</p>
                     <div class="max-w-[640px]">
                         <h3 class="text-xl leading-[30px] font-bold text-black">{{ $job['role'] }}</h3>
@@ -274,7 +281,7 @@
 
     {{-- ───────────────────────── Design process ───────────────────────── --}}
     <section class="mx-auto max-w-[1080px] px-6 py-10">
-        <div class="rounded-[36px] bg-azure px-6 py-8 lg:px-[30px] lg:py-[30px]">
+        <div data-reveal class="rounded-[36px] bg-azure px-6 py-8 lg:px-[30px] lg:py-[30px]">
             <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
                 <div>
                     <div class="inline-flex items-center gap-2 rounded-full bg-frost-200 px-4 py-2">
@@ -292,7 +299,7 @@
 
             <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-[46px] lg:grid-cols-4">
                 @foreach ($process as $step)
-                    <div class="flex flex-col rounded-[22px] bg-frost-100 p-[17px]">
+                    <div data-reveal class="flex flex-col rounded-[22px] bg-frost-100 p-[17px]">
                         <span class="grid size-9 place-items-center rounded-full bg-white text-sm leading-5 font-medium text-azure">{{ $step['no'] }}</span>
                         <h3 class="mt-4 font-display text-[22px] leading-[26px] font-bold text-primary">{{ $step['title'] }}</h3>
                         <p class="mt-1.5 text-sm leading-[21px] text-black">{{ $step['desc'] }}</p>
@@ -303,15 +310,16 @@
     </section>
 
     {{-- ───────────────────────── Skills cloud ───────────────────────── --}}
-    <section id="about" class="mx-auto max-w-[1080px] px-6 py-10">
+    {{-- Pills alternate left and right in $skillCloud, so odd ones slide in from the left. Clipped so they can't cause sideways scrolling. --}}
+    <div class="overflow-x-clip"><section id="about" class="mx-auto max-w-[1080px] px-6 py-10">
         {{-- Stacked below lg, scattered at lg --}}
         <div class="flex flex-col items-center gap-8 lg:hidden">
-            <p class="text-center text-xl leading-[1.4] font-medium text-ink-muted sm:text-[26px]">
+            <p data-reveal class="text-center text-xl leading-[1.4] font-medium text-ink-muted sm:text-[26px]">
                 i design simple, intuitive, and human-centered interfaces that make digital experiences feel clear, comfortable, and meaningful for users.
             </p>
             <div class="flex flex-wrap justify-center gap-3">
                 @foreach ($skillCloud as $pill)
-                    <span class="inline-flex items-center gap-2 rounded-full bg-surface p-2 shadow-[3px_3px_3px_rgba(0,0,0,0.25)]">
+                    <span data-reveal="{{ $loop->odd ? 'left' : 'right' }}" class="inline-flex items-center gap-2 rounded-full bg-surface p-2 shadow-[3px_3px_3px_rgba(0,0,0,0.25)]">
                         <span class="grid size-8 shrink-0 place-items-center rounded-full {{ $pill['icon'] }}">
                             <svg class="size-[22px] fill-white" viewBox="0 0 18 18" aria-hidden="true"><use href="#star"/></svg>
                         </span>
@@ -322,11 +330,11 @@
         </div>
 
         <div class="relative hidden h-[372px] lg:block">
-            <p class="absolute top-[197px] left-1/2 w-[402px] -translate-x-1/2 -translate-y-1/2 text-center text-[26px] leading-9 font-medium text-ink-muted">
+            <p data-reveal class="absolute top-[197px] left-1/2 w-[402px] -translate-x-1/2 -translate-y-1/2 text-center text-[26px] leading-9 font-medium text-ink-muted">
                 i design simple, intuitive, and human-centered interfaces that make digital experiences feel clear, comfortable, and meaningful for users.
             </p>
             @foreach ($skillCloud as $pill)
-                <span class="absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full bg-surface p-2 shadow-[3px_3px_3px_rgba(0,0,0,0.25)] {{ $pill['place'] }}">
+                <span data-reveal="{{ $loop->odd ? 'left' : 'right' }}" class="absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full bg-surface p-2 shadow-[3px_3px_3px_rgba(0,0,0,0.25)] {{ $pill['place'] }}">
                     <span class="grid size-8 shrink-0 place-items-center rounded-full {{ $pill['icon'] }}">
                         <svg class="size-[22px] fill-white" viewBox="0 0 18 18" aria-hidden="true"><use href="#star"/></svg>
                     </span>
@@ -334,14 +342,14 @@
                 </span>
             @endforeach
         </div>
-    </section>
+    </section></div>
 
     {{-- ───────────────────────── Credentials ───────────────────────── --}}
     <section class="mx-auto max-w-[1080px] px-6 py-10">
         <div class="grid gap-4 lg:grid-cols-[1fr_280px] lg:gap-x-[66px]">
             <div class="grid gap-4 sm:grid-cols-2">
                 @foreach ($infoCards as $card)
-                    <div class="flex flex-col gap-[18px] rounded-[9px] bg-frost-200 p-[17px]">
+                    <div data-reveal class="flex flex-col gap-[18px] rounded-[9px] bg-frost-200 p-[17px]">
                         <h3 class="font-serif text-[22px] leading-7 font-bold text-primary">{{ $card['title'] }}</h3>
                         <div class="text-sm leading-[21px] text-black">
                             @if ($card['lead'])
@@ -355,7 +363,7 @@
                 @endforeach
             </div>
 
-            <img src="{{ asset('assets/work/profile-secondary.webp') }}" alt="Tata Azkia Azzahra"
+            <img data-reveal src="{{ asset('assets/work/profile-secondary.webp') }}" alt="Tata Azkia Azzahra"
                  width="329" height="490"
                  class="mx-auto h-auto w-[280px] max-w-full lg:mx-0">
         </div>
@@ -363,7 +371,7 @@
 
     {{-- ───────────────────────── Closing call to action ───────────────────────── --}}
     <section class="mx-auto max-w-[1080px] px-6 pt-10 pb-8">
-        <div class="relative isolate overflow-hidden rounded-[36px] bg-frost-200 px-6 py-11 text-center lg:pt-8 lg:pb-[63px]">
+        <div data-reveal class="relative isolate overflow-hidden rounded-[36px] bg-frost-200 px-6 py-11 text-center lg:pt-8 lg:pb-[63px]">
             {{-- Soft background glows --}}
             <div class="absolute -top-[70px] left-[24.6%] -z-10 size-[437px] rounded-full bg-frost-300 blur-[144px]" aria-hidden="true"></div>
             <div class="absolute top-[70px] -left-[48px] -z-10 size-[366px] rounded-full bg-frost-100 blur-[72px]" aria-hidden="true"></div>
@@ -427,5 +435,18 @@
         </div>
     </footer>
 
+    {{-- Scroll reveal, styled by [data-reveal] in app.css. Elements entering together are staggered.
+         The footer is left out: the bottom margin would stop it ever counting as in view at the end of the page. --}}
+    <script>
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.filter((entry) => entry.isIntersecting).forEach((entry, index) => {
+                entry.target.style.transitionDelay = `${Math.min(index, 5) * 80}ms`;
+                entry.target.classList.add('is-revealed');
+                revealObserver.unobserve(entry.target);
+            });
+        }, { rootMargin: '0px 0px -8% 0px' });
+
+        document.querySelectorAll('[data-reveal]').forEach((element) => revealObserver.observe(element));
+    </script>
 </body>
 </html>
