@@ -5,6 +5,14 @@
 @php
     // "View Full Design System" opens this slide in the carousel.
     $designSlide = collect($project['slides'])->search(fn ($slide) => $slide['label'] === 'Design System');
+    // In copy, [[Slide Label|words]] links those words to the first slide with that label in the carousel.
+    $slideLinks = function (string $text) use ($project) {
+        return preg_replace_callback('/\[\[(.+?)\|(.+?)\]\]/', function ($match) use ($project) {
+            $index = collect($project['slides'])->search(fn ($slide) => e($slide['label']) === $match[1]);
+
+            return $index === false ? $match[2] : '<a href="#showcase" data-carousel-goto="'.$index.'" class="font-semibold text-primary hover:text-azure">'.$match[2].'</a>';
+        }, e($text));
+    };
     $sectionHeading = 'font-display text-[28px] leading-[1.2] font-bold text-azure sm:text-3xl';
 @endphp
 
@@ -116,7 +124,7 @@
                 @foreach ($project['about'] as $item)
                     <div data-reveal>
                         <h3 class="leading-5 font-bold text-primary">{{ $item['title'] }}</h3>
-                        <p class="mt-3 leading-6 text-ink">{{ $item['text'] }}</p>
+                        <p class="mt-3 leading-6 text-ink">{!! $slideLinks($item['text']) !!}</p>
                     </div>
                 @endforeach
             </div>
@@ -127,7 +135,7 @@
     @isset($project['process'])
         <section class="mx-auto max-w-[1080px] px-6 pt-12 lg:pt-14">
             <h2 data-reveal class="{{ $sectionHeading }}">Process</h2>
-            <div class="mt-6 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
+            <div @class(['mt-6 grid gap-[18px] sm:grid-cols-2', 'lg:grid-cols-4' => count($project['process']) === 4, 'lg:grid-cols-3' => count($project['process']) !== 4])>
                 @foreach ($project['process'] as $step)
                     <div data-reveal class="rounded-2xl bg-white p-6">
                         <p class="text-sm leading-4 font-bold text-azure-soft">{{ $step['no'] }}</p>
