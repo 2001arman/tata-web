@@ -3,7 +3,8 @@
 @section('title', 'Tata Azkia Azzahra — UI/UX Designer')
 
 @php
-    $skillBand = ['UX Research', 'UI Design', 'Prototyping', 'Illustration', 'Graphic Design', 'Mobile & Web Design'];
+    $skillBand = ['UI Design', 'UX Research'];
+    $statement = 'i design simple, intuitive, and human-centered interfaces that make digital experiences feel clear, comfortable, and meaningful for users.';
 
     $allProjects = collect(config('portfolio.projects'))
         ->map(fn ($project, $slug) => $project + ['slug' => $slug])
@@ -63,62 +64,67 @@
 @endphp
 
 @section('content')
+    {{-- First screen: the hero and skills band fill the viewport below the 70px header, so the band always
+         ends at the bottom of the screen. The photo takes whatever height the text leaves. --}}
+    <div class="flex min-h-[calc(100svh-70px)] flex-col">
     {{-- ───────────────────────── Hero ───────────────────────── --}}
     {{-- The photo extends past its box; clip at the viewport edge so narrow widths don't scroll sideways. --}}
-    <div class="overflow-x-clip"><section class="mx-auto max-w-[1080px] px-6 pt-10 pb-14 lg:pt-8 lg:pb-7">
-        <div class="flex flex-col-reverse items-center gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-0">
-            <div data-reveal class="flex max-w-[480px] flex-col gap-10 text-center lg:pt-[46px] lg:text-left">
-                <div class="flex flex-col gap-2.5">
-                    <p class="font-display text-xl leading-7 font-bold text-primary lg:text-2xl">Hi there!👋🏻</p>
-                    <h1 class="font-display text-4xl leading-[1.1] font-bold text-ink sm:text-5xl lg:text-[56px] lg:leading-[1.05]">I’m Tata Azkia Azzahra,</h1>
-                    <p class="font-display text-[26px] leading-[1.2] font-bold text-primary sm:text-[32px] lg:text-[40px] lg:leading-[1.2]">a UI/UX Designer</p>
-                    <p class="mt-1 leading-7 font-medium text-ink">
+    <div class="flex flex-1 flex-col overflow-x-clip"><section class="mx-auto flex w-full max-w-[1080px] flex-1 flex-col px-6 pt-4 pb-5 short:pt-2 short:pb-3 lg:py-6">
+        <div class="flex flex-1 flex-col-reverse items-center gap-5 short:gap-2.5 sm:gap-8 lg:flex-row lg:justify-between lg:gap-0">
+            <div data-reveal class="flex max-w-[480px] flex-col gap-5 text-center short:gap-3 sm:gap-8 lg:gap-10 lg:text-left">
+                <div class="flex flex-col gap-2.5 short:gap-1">
+                    <p class="font-display text-xl leading-7 font-bold text-primary short:text-base short:leading-5 lg:text-2xl">Hi there!👋🏻</p>
+                    <h1 class="font-display text-4xl leading-[1.1] font-bold text-ink short:text-[28px] sm:text-5xl lg:text-[56px] lg:leading-[1.05]">I’m Tata Azkia Azzahra,</h1>
+                    <p class="font-display text-[26px] leading-[1.2] font-bold text-primary short:text-xl sm:text-[32px] lg:text-[40px] lg:leading-[1.2]">a UI/UX Designer</p>
+                    <p class="mt-1 leading-6 font-medium text-ink short:text-sm short:leading-5 sm:leading-7">
                         A passionate UI/UX Designer who transforms ideas into intuitive,
                         human-centered, and visually engaging experiences.
                     </p>
                 </div>
 
-                <div class="flex flex-col gap-5">
-                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm leading-6 font-medium text-ink lg:justify-start lg:text-base">
+                <div class="flex flex-col gap-5 short:gap-2.5">
+                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm leading-6 font-medium text-ink short:gap-x-2 short:gap-y-0 short:text-[11px] short:leading-5 lg:justify-start lg:text-base">
                         <span>💡 Curious Mind</span>
                         <span>🎨 Design Thinker</span>
                         <span>🌏 Problem Solver</span>
                     </div>
 
-                    <div class="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+                    <div class="flex flex-wrap justify-center gap-3 short:gap-2 sm:gap-4 lg:justify-start">
                         <a href="{{ $email }}"
-                           class="inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 leading-6 font-bold text-white transition hover:bg-primary-dark">
+                           class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm leading-6 font-bold text-white transition hover:bg-primary-dark short:px-3.5 short:py-2 short:text-[13px] sm:px-8 sm:py-4 sm:text-base">
                             Contact Me!
                         </a>
                         <a href="{{ $resume }}" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center rounded-full border border-frost-300 bg-white px-8 py-4 leading-6 font-bold text-primary transition hover:bg-frost-50">
+                           class="inline-flex items-center justify-center rounded-full border border-frost-300 bg-white px-5 py-3 text-sm leading-6 font-bold text-primary transition hover:bg-frost-50 short:px-3.5 short:py-2 short:text-[13px] sm:px-8 sm:py-4 sm:text-base">
                             Download Resume
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div data-reveal class="relative aspect-[482/648] w-[280px] shrink-0 sm:w-[340px] lg:w-[400px]">
-                <img src="{{ asset('assets/hero-photo.webp') }}" alt="Tata Azkia Azzahra"
-                     width="553" height="601"
-                     class="absolute top-[3.7%] left-[-5.187%] w-[114.73%] max-w-none">
-                <svg class="absolute top-[27.78%] left-[86.1%] w-[15.35%] fill-primary" viewBox="0 0 18 18" aria-hidden="true">
-                    <use href="#star"/>
-                </svg>
-                <svg class="absolute top-[79.17%] left-[6.02%] w-[15.14%] fill-ink" viewBox="0 0 18 18" aria-hidden="true">
-                    <use href="#star"/>
-                </svg>
+            <div data-reveal class="relative min-h-[140px] w-full flex-1 short:min-h-[96px] lg:aspect-[482/648] lg:h-[min(538px,calc(100svh-166px))] lg:w-auto lg:flex-none lg:shrink-0">
+                <div class="absolute inset-y-0 left-1/2 my-auto aspect-[482/648] h-full max-h-[376px] -translate-x-1/2 sm:max-h-[457px] lg:max-h-none">
+                    <img src="{{ asset('assets/hero-photo.webp') }}" alt="Tata Azkia Azzahra"
+                         width="553" height="601"
+                         class="absolute top-[3.7%] left-[-5.187%] w-[114.73%] max-w-none">
+                    <svg class="absolute top-[27.78%] left-[86.1%] w-[15.35%] fill-primary" viewBox="0 0 18 18" aria-hidden="true">
+                        <use href="#star"/>
+                    </svg>
+                    <svg class="absolute top-[79.17%] left-[6.02%] w-[15.14%] fill-ink" viewBox="0 0 18 18" aria-hidden="true">
+                        <use href="#star"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section></div>
 
     {{-- ───────────────────────── Skills band ───────────────────────── --}}
-    {{-- Five identical copies: the keyframe shifts the track by exactly one copy (-20%), so the loop is
-         seamless, and the other four (about 4000px) keep the band full on very wide screens.
+    {{-- Twenty identical copies: the keyframe shifts the track by exactly one copy (-5%), so the loop is
+         seamless, and the others keep the band full on very wide screens even with a short skill list.
          With reduced motion it falls back to a single row that can be swiped. --}}
-    <section class="overflow-hidden bg-primary motion-reduce:no-scrollbar motion-reduce:overflow-x-auto" aria-label="Areas of practice">
+    <section class="shrink-0 overflow-hidden bg-primary motion-reduce:no-scrollbar motion-reduce:overflow-x-auto" aria-label="Areas of practice">
         <div class="flex h-12 w-max animate-marquee items-center text-white hover:[animation-play-state:paused] motion-reduce:mx-auto motion-reduce:animate-none motion-reduce:px-6">
-            @foreach (range(1, 5) as $copy)
+            @foreach (range(1, 20) as $copy)
                 <div @class(['flex shrink-0 items-center gap-[18px] pr-[18px] motion-reduce:pr-0', 'motion-reduce:hidden' => ! $loop->first]) @unless ($loop->first) aria-hidden="true" @endunless>
                     @foreach ($skillBand as $skill)
                         <span class="font-display text-lg leading-[1.2] font-bold whitespace-nowrap">{{ $skill }}</span>
@@ -130,6 +136,7 @@
             @endforeach
         </div>
     </section>
+    </div>
 
     {{-- ───────────────────────── Selected work ───────────────────────── --}}
     <section id="projects" class="mx-auto max-w-[1080px] px-6 pt-20 pb-10">
@@ -143,7 +150,7 @@
                 </div>
                 <h2 data-reveal class="mt-5 font-display text-4xl leading-[1.1] font-bold text-black sm:text-5xl lg:text-[56px] lg:leading-[1.05]">Selected Work</h2>
 
-                <article data-reveal class="group relative mt-4 flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[0]['card'] }}">
+                <article data-reveal class="project-card group relative mt-4 flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[0]['card'] }}">
                     <img src="{{ asset($featured[0]['image']) }}" alt="{{ $featured[0]['title'] }} preview"
                          class="w-full rounded-[20px] {{ $featured[0]['ratio'] }} object-cover">
                     <h3 class="mt-3.5 font-display text-[30px] leading-9 font-bold {{ $featured[0]['text'] }}"><a href="{{ route('projects.show', $featured[0]['slug']) }}" class="after:absolute after:inset-0">{{ $featured[0]['title'] }}</a></h3>
@@ -154,7 +161,7 @@
                 </article>
             </div>
 
-            <article data-reveal class="group relative flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[1]['card'] }}">
+            <article data-reveal class="project-card group relative flex flex-col rounded-[36px] px-[22px] pt-[46px] pb-[44px] {{ $featured[1]['card'] }}">
                 <img src="{{ asset($featured[1]['image']) }}" alt="{{ $featured[1]['title'] }} preview"
                      class="w-full rounded-[20px] {{ $featured[1]['ratio'] }} object-cover">
                 <h3 class="mt-3.5 font-display text-[30px] leading-9 font-bold {{ $featured[1]['text'] }}"><a href="{{ route('projects.show', $featured[1]['slug']) }}" class="after:absolute after:inset-0">{{ $featured[1]['title'] }}</a></h3>
@@ -168,7 +175,7 @@
         {{-- Nine project cards --}}
         <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($projects as $project)
-                <article data-reveal class="group relative flex flex-col rounded-[24px] px-3.5 pt-7 pb-3.5 {{ $project['card'] }}">
+                <article data-reveal class="project-card group relative flex flex-col rounded-[24px] px-3.5 pt-7 pb-3.5 {{ $project['card'] }}">
                     <img src="{{ asset($project['image']) }}" alt="{{ $project['title'] }} preview"
                          class="aspect-[304/209] w-full rounded-[20px] object-cover">
                     <h3 class="mt-2.5 max-w-[200px] font-display text-xl leading-6 font-bold {{ $project['text'] }}"><a href="{{ route('projects.show', $project['slug']) }}" class="after:absolute after:inset-0">{{ $project['title'] }}</a></h3>
@@ -189,13 +196,13 @@
         </div>
         <h2 data-reveal class="mt-5 max-w-[600px] font-display text-4xl leading-[1.1] font-bold text-black sm:text-5xl lg:text-[56px] lg:leading-[1.05]">Designing across different challenges</h2>
 
-        <div class="mt-10">
+        <div class="mt-10 flex flex-col gap-10 lg:gap-12">
             @foreach ($experience as $job)
-                <div data-reveal class="grid gap-2 py-5 lg:grid-cols-[220px_1fr] lg:gap-x-6 lg:gap-y-0 lg:py-0">
+                <div data-reveal class="grid gap-2 lg:grid-cols-[220px_1fr] lg:gap-x-6 lg:gap-y-0">
                     <p class="leading-6 font-bold text-black lg:text-right">{{ $job['date'] }}</p>
                     <div class="max-w-[640px]">
                         <h3 class="text-xl leading-[30px] font-bold text-black">{{ $job['role'] }}</h3>
-                        <p class="leading-6 font-semibold text-black">{{ $job['company'] }}</p>
+                        <p class="leading-6 font-semibold text-primary">{{ $job['company'] }}</p>
                         <p class="mt-6 leading-6 text-black lg:text-justify">{{ $job['desc'] }}</p>
                     </div>
                 </div>
@@ -238,8 +245,10 @@
     <div class="overflow-x-clip"><section id="about" class="mx-auto max-w-[1080px] px-6 py-10">
         {{-- Stacked below lg, scattered at lg --}}
         <div class="flex flex-col items-center gap-8 lg:hidden">
-            <p data-reveal class="text-center text-xl leading-[1.4] font-medium text-ink-muted sm:text-[26px]">
-                i design simple, intuitive, and human-centered interfaces that make digital experiences feel clear, comfortable, and meaningful for users.
+            <p data-reveal="words" class="text-center text-xl leading-[1.4] font-medium text-ink-muted sm:text-[26px]">
+                @foreach (explode(' ', $statement) as $word)
+                    <span class="reveal-word" style="--word: {{ $loop->index }}">{{ $word }}</span>
+                @endforeach
             </p>
             <div class="flex flex-wrap justify-center gap-3">
                 @foreach ($skillCloud as $pill)
@@ -254,8 +263,10 @@
         </div>
 
         <div class="relative hidden h-[372px] lg:block">
-            <p data-reveal class="absolute top-[197px] left-1/2 w-[402px] -translate-x-1/2 -translate-y-1/2 text-center text-[26px] leading-9 font-medium text-ink-muted">
-                i design simple, intuitive, and human-centered interfaces that make digital experiences feel clear, comfortable, and meaningful for users.
+            <p data-reveal="words" class="absolute top-[197px] left-1/2 w-[402px] -translate-x-1/2 -translate-y-1/2 text-center text-[26px] leading-9 font-medium text-ink-muted">
+                @foreach (explode(' ', $statement) as $word)
+                    <span class="reveal-word" style="--word: {{ $loop->index }}">{{ $word }}</span>
+                @endforeach
             </p>
             @foreach ($skillCloud as $pill)
                 <span data-reveal="{{ $loop->odd ? 'left' : 'right' }}" class="absolute inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full bg-surface p-2 shadow-[3px_3px_3px_rgba(0,0,0,0.25)] {{ $pill['place'] }}">

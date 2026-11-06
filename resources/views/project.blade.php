@@ -44,7 +44,7 @@
     </section>
 
     {{-- ───────────────────────── Showcase ───────────────────────── --}}
-    <section id="showcase" class="mx-auto max-w-[1080px] scroll-mt-6 px-6 pt-12 lg:pt-14">
+    <section id="showcase" class="mx-auto max-w-[1080px] px-6 pt-12 lg:pt-14">
         <h2 data-reveal class="{{ $sectionHeading }}">Showcase</h2>
 
         {{-- Slides swipe natively with scroll snapping; the buttons below drive the same scroll position.
@@ -178,19 +178,51 @@
         document.querySelectorAll('[data-carousel]').forEach((carousel) => {
             const track = carousel.querySelector('[data-carousel-track]');
             const dots = [...carousel.querySelectorAll('[data-carousel-dot]')];
-            const current = () => Math.round(track.scrollLeft / track.clientWidth);
+            const count = dots.length;
             const behavior = () => (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
 
-            // Wraps around at both ends, as the arrows show on every slide in the design.
-            const goTo = (index) => {
-                const slide = (index + dots.length) % dots.length;
-                track.scrollTo({ left: slide * track.clientWidth, behavior: behavior() });
+            // A copy of the last slide sits before the first, and a copy of the first after the last, so arrows
+            // and swipes keep moving the same way at both ends. Positions below count these copies: 1 is the first real slide.
+            const copyOf = (slide) => {
+                const copy = slide.cloneNode(true);
+                copy.setAttribute('aria-hidden', 'true');
+                copy.inert = true;
+                copy.querySelector('img').loading = 'eager';
+                return copy;
+            };
+            const slides = [...track.children];
+            track.prepend(copyOf(slides[count - 1]));
+            track.append(copyOf(slides[0]));
+
+            const position = () => track.scrollLeft / track.clientWidth;
+            const scrollToPosition = (target, scrollBehavior) => track.scrollTo({ left: target * track.clientWidth, behavior: scrollBehavior });
+            const current = () => (((Math.round(position()) - 1) % count) + count) % count;
+
+            // On a copy, jump to the real slide with the same picture. The jump can't be seen.
+            const leaveCopy = () => {
+                if (position() < 0.5) {
+                    scrollToPosition(position() + count, 'instant');
+                } else if (position() > count + 0.5) {
+                    scrollToPosition(position() - count, 'instant');
+                }
+            };
+            const step = (delta) => {
+                leaveCopy();
+                scrollToPosition(Math.round(position()) + delta, behavior());
             };
 
-            carousel.querySelector('[data-carousel-prev]').addEventListener('click', () => goTo(current() - 1));
-            carousel.querySelector('[data-carousel-next]').addEventListener('click', () => goTo(current() + 1));
+            scrollToPosition(1, 'instant');
+
+            carousel.querySelector('[data-carousel-prev]').addEventListener('click', () => step(-1));
+            carousel.querySelector('[data-carousel-next]').addEventListener('click', () => step(1));
+
+            const goTo = (index) => {
+                leaveCopy();
+                scrollToPosition(index + 1, behavior());
+            };
             dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
 
+            let settling;
             track.addEventListener('scroll', () => {
                 dots.forEach((dot, index) => {
                     if (index === current()) {
@@ -199,6 +231,13 @@
                         dot.removeAttribute('aria-current');
                     }
                 });
+
+                clearTimeout(settling);
+                settling = setTimeout(() => {
+                    if (Math.abs(position() - Math.round(position())) < 0.01) {
+                        leaveCopy();
+                    }
+                }, 150);
             }, { passive: true });
 
             document.querySelectorAll('[data-carousel-goto]').forEach((link) => {

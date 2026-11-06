@@ -4,7 +4,7 @@
     $linkedin = config('portfolio.linkedin');
 @endphp
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-16">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,16 +35,19 @@
     </svg>
 
     {{-- ───────────────────────── Navigation ───────────────────────── --}}
-    <header class="px-4 pt-4 sm:px-6 sm:pt-6 lg:px-10 lg:pt-10">
-        <nav class="mx-auto flex max-w-[1280px] items-center justify-between gap-1 rounded-full border min-[400px]:gap-3 border-primary bg-frost-100 p-1.5 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-0">
+    {{-- Floats over the page, hiding on scroll down and returning on scroll up (script below). The extra 32px also moves
+         the pill's shadow out of view. The header takes up 70px, which the home hero subtracts to fit the first screen.
+         Only the pill catches clicks, so the empty space beside it doesn't block the page underneath. --}}
+    <header data-site-header class="pointer-events-none sticky top-0 z-50 px-4 pt-3 transition-transform duration-300 ease-out data-hidden:-translate-y-[calc(100%+32px)] motion-reduce:transition-none">
+        <nav class="pointer-events-auto mx-auto flex w-fit max-w-full items-center gap-1 rounded-full border border-primary bg-frost-100/85 p-1.5 shadow-[0_8px_24px_rgba(1,63,142,0.12)] backdrop-blur-md min-[400px]:gap-3 lg:gap-2">
             <a href="{{ url('/') }}" class="grid size-11 shrink-0 place-items-center rounded-full bg-white" aria-label="Tata Azkia Azzahra — home">
                 <img src="{{ asset('assets/icons/avatar.svg') }}" alt="" class="size-[46px] max-w-none">
             </a>
 
-            <div class="flex items-center lg:justify-self-center">
-                <a href="{{ url('/') }}#projects" class="rounded-full px-2 py-2.5 text-center min-[400px]:px-3.5 text-sm leading-6 text-primary transition hover:bg-white/70 lg:min-w-[114px] lg:px-5 lg:text-base">Projects</a>
-                <a href="{{ url('/') }}#work" class="rounded-full px-2 py-2.5 text-center min-[400px]:px-3.5 text-sm leading-6 text-primary transition hover:bg-white/70 lg:min-w-[114px] lg:px-5 lg:text-base">Work</a>
-                <a href="{{ url('/') }}#about" class="rounded-full px-2 py-2.5 text-center min-[400px]:px-3.5 text-sm leading-6 text-primary transition hover:bg-white/70 lg:min-w-[114px] lg:px-5 lg:text-base">About</a>
+            <div class="flex items-center">
+                <a href="{{ url('/') }}#projects" class="rounded-full px-2 py-2.5 text-center min-[400px]:px-3.5 text-sm leading-6 text-primary transition hover:bg-white/70 lg:px-5 lg:text-base">Projects</a>
+                <a href="{{ url('/') }}#work" class="rounded-full px-2 py-2.5 text-center min-[400px]:px-3.5 text-sm leading-6 text-primary transition hover:bg-white/70 lg:px-5 lg:text-base">Work</a>
+                <a href="{{ url('/') }}#about" class="rounded-full px-2 py-2.5 text-center min-[400px]:px-3.5 text-sm leading-6 text-primary transition hover:bg-white/70 lg:px-5 lg:text-base">About</a>
             </div>
 
             <a href="{{ $linkedin }}" target="_blank" rel="noopener noreferrer"
@@ -56,7 +59,7 @@
             </a>
 
             <a href="{{ $linkedin }}" target="_blank" rel="noopener noreferrer"
-               class="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold leading-5 text-white transition hover:bg-primary-dark lg:inline-flex lg:justify-self-end">
+               class="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold leading-5 text-white transition hover:bg-primary-dark lg:inline-flex">
                 Find me on LinkedIn
                 <svg class="size-5" aria-hidden="true"><use href="#arrow-out"/></svg>
             </a>
@@ -132,17 +135,45 @@
     </footer>
 
     {{-- Scroll reveal, styled by [data-reveal] in app.css. Elements entering together are staggered.
+         It replays in both scroll directions: an element resets once it is well outside the viewport. That 100px
+         margin is larger than the hidden offset, so a reset can't push the element back into view and make it flicker.
          The footer is left out: the bottom margin would stop it ever counting as in view at the end of the page. --}}
     <script>
         const revealObserver = new IntersectionObserver((entries) => {
             entries.filter((entry) => entry.isIntersecting).forEach((entry, index) => {
-                entry.target.style.transitionDelay = `${Math.min(index, 5) * 80}ms`;
+                entry.target.style.setProperty('--reveal-delay', `${Math.min(index, 5) * 80}ms`);
                 entry.target.classList.add('is-revealed');
-                revealObserver.unobserve(entry.target);
             });
         }, { rootMargin: '0px 0px -8% 0px' });
 
-        document.querySelectorAll('[data-reveal]').forEach((element) => revealObserver.observe(element));
+        const resetObserver = new IntersectionObserver((entries) => {
+            entries.filter((entry) => ! entry.isIntersecting).forEach((entry) => entry.target.classList.remove('is-revealed'));
+        }, { rootMargin: '100px 0px' });
+
+        document.querySelectorAll('[data-reveal]').forEach((element) => {
+            revealObserver.observe(element);
+            resetObserver.observe(element);
+        });
+
+        // Navbar: hidden while scrolling down, back on scroll up. Movements under 8px are ignored so small jitters don't
+        // toggle it, and the position is clamped so the bounce at either end of the page on phones doesn't count.
+        const siteHeader = document.querySelector('[data-site-header]');
+        const scrollPosition = () => Math.min(Math.max(window.scrollY, 0), document.documentElement.scrollHeight - window.innerHeight);
+        let lastScrollPosition = scrollPosition();
+
+        window.addEventListener('scroll', () => {
+            const position = scrollPosition();
+
+            if (Math.abs(position - lastScrollPosition) < 8) {
+                return;
+            }
+
+            siteHeader.toggleAttribute('data-hidden', position > lastScrollPosition && position > siteHeader.offsetHeight);
+            lastScrollPosition = position;
+        }, { passive: true });
+
+        // Keyboard users tabbing into the navbar must be able to see it.
+        siteHeader.addEventListener('focusin', () => siteHeader.removeAttribute('data-hidden'));
     </script>
 
     @stack('scripts')

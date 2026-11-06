@@ -5,6 +5,9 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+/* Phones and tablets with little height, where the home hero tightens up to fit the first screen. */
+@custom-variant short (@media (max-height: 800px) and (max-width: 1023.98px));
+
 /* Design tokens extracted from Figma: "pOrtfOliO foR a BetTer TatA" (348:1002) */
 @theme {
     --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -29,12 +32,12 @@
     --color-bright-500: #0785db;
     --color-bright-600: #0370b9;
 
-    /* Skills band: shifts the track by one of its five copies. Change the duration to adjust the speed. */
-    --animate-marquee: marquee 25s linear infinite;
+    /* Skills band: shifts the track by one of its twenty copies. Change the duration to adjust the speed. */
+    --animate-marquee: marquee 8s linear infinite;
 
     @keyframes marquee {
         to {
-            transform: translateX(-20%);
+            transform: translateX(-5%);
         }
     }
 }
@@ -56,17 +59,46 @@
 }
 
 /*
- * Scroll reveal: [data-reveal] elements start hidden, and the script in home.blade.php adds .is-revealed
- * as they enter the viewport. Only `transform` moves them because Tailwind's translate-* and rotate-*
- * utilities use their own properties, so the positioned skill pills keep their placement.
+ * Scroll reveal: [data-reveal] elements start hidden, and the script in layouts/site.blade.php adds
+ * .is-revealed as they enter the viewport and removes it once they are well outside it, so it replays.
+ * Only `transform` moves them because Tailwind's translate-* and rotate-* utilities use their own
+ * properties, so the positioned skill pills keep their placement.
  * The hidden state needs screen media, scripting and allowed motion, so nothing stays invisible otherwise.
  * Don't put data-reveal on an element with a `transition` utility: one would override the other.
+ * The stagger delay applies only to the reveal, so .project-card hover still responds at once.
  */
 @layer components {
     [data-reveal] {
         transition:
-            opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-            transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+            opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+            transform 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+            translate 300ms ease-out,
+            box-shadow 300ms ease-out;
+    }
+
+    /* The whole project card lifts on hover or keyboard focus, not only its arrow. */
+    @media (hover: hover) {
+        .project-card:hover {
+            translate: 0 -6px;
+            box-shadow: 0 18px 40px rgb(1 63 142 / 0.22);
+        }
+    }
+
+    .project-card:has(a:focus-visible) {
+        translate: 0 -6px;
+        box-shadow: 0 18px 40px rgb(1 63 142 / 0.22);
+    }
+
+    /* data-reveal="words": the words of a sentence fade in one after another. */
+    .reveal-word {
+        display: inline-block;
+        transition:
+            opacity 600ms ease-out,
+            transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-reveal='words'].is-revealed .reveal-word {
+        transition-delay: calc(var(--word) * 90ms);
     }
 
     @media screen and (scripting: enabled) and (prefers-reduced-motion: no-preference) {
@@ -82,6 +114,16 @@
 
         [data-reveal='right']:not(.is-revealed) {
             transform: translateX(80px);
+        }
+
+        [data-reveal='words']:not(.is-revealed) {
+            opacity: 1;
+            transform: none;
+        }
+
+        [data-reveal='words']:not(.is-revealed) .reveal-word {
+            opacity: 0;
+            transform: translateY(12px);
         }
     }
 }
