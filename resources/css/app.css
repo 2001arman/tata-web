@@ -8,6 +8,12 @@
 /* Phones and tablets with little height, where the home hero tightens up to fit the first screen. */
 @custom-variant short (@media (max-height: 800px) and (max-width: 1023.98px));
 
+/* Phones held sideways, where the home hero sits side by side because stacking leaves no room for the photo. */
+@custom-variant wide-short (@media (orientation: landscape) and (max-height: 500px) and (min-width: 640px) and (max-width: 1023.98px));
+
+/* Small laptops, where the home hero tightens up so the skills band still ends at the bottom of the screen. */
+@custom-variant lg-short (@media (max-height: 700px) and (min-width: 1024px));
+
 /* Design tokens extracted from Figma: "pOrtfOliO foR a BetTer TatA" (348:1002) */
 @theme {
     --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -33,7 +39,7 @@
     --color-bright-600: #0370b9;
 
     /* Skills band: shifts the track by one of its twenty copies. Change the duration to adjust the speed. */
-    --animate-marquee: marquee 8s linear infinite;
+    --animate-marquee: marquee 30s linear infinite;
 
     @keyframes marquee {
         to {

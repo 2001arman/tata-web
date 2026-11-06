@@ -3,7 +3,7 @@
 @section('title', 'Tata Azkia Azzahra — UI/UX Designer')
 
 @php
-    $skillBand = ['UI Design', 'UX Research'];
+    $skillBand = ['UI Design', 'UX Research', 'Wireframing', 'Prototyping', 'Vector Illustration', 'Graphic Design', 'Figma'];
     $statement = 'i design simple, intuitive, and human-centered interfaces that make digital experiences feel clear, comfortable, and meaningful for users.';
 
     $allProjects = collect(config('portfolio.projects'))
@@ -70,12 +70,12 @@
     {{-- ───────────────────────── Hero ───────────────────────── --}}
     {{-- The photo extends past its box; clip at the viewport edge so narrow widths don't scroll sideways. --}}
     <div class="flex flex-1 flex-col overflow-x-clip"><section class="mx-auto flex w-full max-w-[1080px] flex-1 flex-col px-6 pt-4 pb-5 short:pt-2 short:pb-3 lg:py-6">
-        <div class="flex flex-1 flex-col-reverse items-center gap-5 short:gap-2.5 sm:gap-8 lg:flex-row lg:justify-between lg:gap-0">
-            <div data-reveal class="flex max-w-[480px] flex-col gap-5 text-center short:gap-3 sm:gap-8 lg:gap-10 lg:text-left">
+        <div class="flex flex-1 flex-col-reverse items-center gap-5 short:gap-2.5 sm:gap-8 lg:flex-row lg:justify-between lg:gap-0 wide-short:flex-row wide-short:gap-6">
+            <div data-reveal class="flex max-w-[480px] flex-col gap-5 text-center short:gap-3 sm:gap-8 lg:gap-10 lg:text-left wide-short:shrink-0 wide-short:text-left lg-short:gap-5">
                 <div class="flex flex-col gap-2.5 short:gap-1">
                     <p class="font-display text-xl leading-7 font-bold text-primary short:text-base short:leading-5 lg:text-2xl">Hi there!👋🏻</p>
-                    <h1 class="font-display text-4xl leading-[1.1] font-bold text-ink short:text-[28px] sm:text-5xl lg:text-[56px] lg:leading-[1.05]">I’m Tata Azkia Azzahra,</h1>
-                    <p class="font-display text-[26px] leading-[1.2] font-bold text-primary short:text-xl sm:text-[32px] lg:text-[40px] lg:leading-[1.2]">a UI/UX Designer</p>
+                    <h1 class="font-display text-4xl leading-[1.1] font-bold text-ink short:text-[28px] sm:text-5xl lg:text-[56px] lg:leading-[1.05] lg-short:text-5xl">I’m Tata Azkia Azzahra,</h1>
+                    <p class="font-display text-[26px] leading-[1.2] font-bold text-primary short:text-xl sm:text-[32px] lg:text-[40px] lg:leading-[1.2] lg-short:text-[32px]">a UI/UX Designer</p>
                     <p class="mt-1 leading-6 font-medium text-ink short:text-sm short:leading-5 sm:leading-7">
                         A passionate UI/UX Designer who transforms ideas into intuitive,
                         human-centered, and visually engaging experiences.
@@ -83,26 +83,26 @@
                 </div>
 
                 <div class="flex flex-col gap-5 short:gap-2.5">
-                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm leading-6 font-medium text-ink short:gap-x-2 short:gap-y-0 short:text-[11px] short:leading-5 lg:justify-start lg:text-base">
+                    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm leading-6 font-medium text-ink short:gap-x-2 short:gap-y-0 short:text-[11px] short:leading-5 lg:justify-start lg:text-base wide-short:justify-start">
                         <span>💡 Curious Mind</span>
                         <span>🎨 Design Thinker</span>
                         <span>🌏 Problem Solver</span>
                     </div>
 
-                    <div class="flex flex-wrap justify-center gap-3 short:gap-2 sm:gap-4 lg:justify-start">
+                    <div class="flex flex-wrap justify-center gap-3 short:gap-2 sm:gap-4 lg:justify-start wide-short:justify-start">
                         <a href="{{ $email }}"
-                           class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm leading-6 font-bold text-white transition hover:bg-primary-dark short:px-3.5 short:py-2 short:text-[13px] sm:px-8 sm:py-4 sm:text-base">
+                           class="inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm leading-6 font-bold text-white transition hover:bg-primary-dark short:px-3 min-[360px]:short:px-3.5 short:py-2 short:text-[13px] sm:px-8 sm:py-4 sm:text-base lg-short:py-3">
                             Contact Me!
                         </a>
                         <a href="{{ $resume }}" target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center rounded-full border border-frost-300 bg-white px-5 py-3 text-sm leading-6 font-bold text-primary transition hover:bg-frost-50 short:px-3.5 short:py-2 short:text-[13px] sm:px-8 sm:py-4 sm:text-base">
+                           class="inline-flex items-center justify-center rounded-full border border-frost-300 bg-white px-5 py-3 text-sm leading-6 font-bold text-primary transition hover:bg-frost-50 short:px-3 min-[360px]:short:px-3.5 short:py-2 short:text-[13px] sm:px-8 sm:py-4 sm:text-base lg-short:py-3">
                             Download Resume
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div data-reveal class="relative min-h-[140px] w-full flex-1 short:min-h-[96px] lg:aspect-[482/648] lg:h-[min(538px,calc(100svh-166px))] lg:w-auto lg:flex-none lg:shrink-0">
+            <div data-reveal class="relative min-h-[140px] w-full flex-1 short:min-h-[96px] wide-short:self-stretch lg:aspect-[482/648] lg:h-[min(538px,calc(100svh-166px))] lg:w-auto lg:flex-none lg:shrink-0">
                 <div class="absolute inset-y-0 left-1/2 my-auto aspect-[482/648] h-full max-h-[376px] -translate-x-1/2 sm:max-h-[457px] lg:max-h-none">
                     <img src="{{ asset('assets/hero-photo.webp') }}" alt="Tata Azkia Azzahra"
                          width="553" height="601"
@@ -142,7 +142,7 @@
     <section id="projects" class="mx-auto max-w-[1080px] px-6 pt-20 pb-10">
         {{-- The heading sits in the left column so the taller right card rises beside it,
              and both columns bottom-align — as laid out in Figma. --}}
-        <div class="grid items-end gap-6 lg:grid-cols-2">
+        <div class="grid items-end gap-6 sm:grid-cols-2">
             <div class="flex flex-col">
                 <div data-reveal class="inline-flex w-fit items-center gap-2 rounded-full bg-azure px-5 py-2.5">
                     <svg class="size-[18px] shrink-0 fill-white" viewBox="0 0 18 18" aria-hidden="true"><use href="#star"/></svg>
@@ -154,7 +154,7 @@
                     <img src="{{ asset($featured[0]['image']) }}" alt="{{ $featured[0]['title'] }} preview"
                          class="w-full rounded-[20px] {{ $featured[0]['ratio'] }} object-cover">
                     <h3 class="mt-3.5 font-display text-[30px] leading-9 font-bold {{ $featured[0]['text'] }}"><a href="{{ route('projects.show', $featured[0]['slug']) }}" class="after:absolute after:inset-0">{{ $featured[0]['title'] }}</a></h3>
-                    <p class="mt-3 max-w-[300px] pr-[74px] leading-6 sm:pr-0 {{ $featured[0]['text'] }}">{{ $featured[0]['desc'] }}</p>
+                    <p class="mt-3 max-w-[300px] pr-[74px] leading-6 lg:pr-0 {{ $featured[0]['text'] }}">{{ $featured[0]['desc'] }}</p>
                     <span class="pointer-events-none absolute right-6 bottom-6 grid transition group-hover:scale-110 size-16 place-items-center rounded-full text-black {{ $featured[0]['circle'] }}">
                         <svg class="size-[18px]" aria-hidden="true"><use href="#arrow-out"/></svg>
                     </span>
@@ -165,7 +165,7 @@
                 <img src="{{ asset($featured[1]['image']) }}" alt="{{ $featured[1]['title'] }} preview"
                      class="w-full rounded-[20px] {{ $featured[1]['ratio'] }} object-cover">
                 <h3 class="mt-3.5 font-display text-[30px] leading-9 font-bold {{ $featured[1]['text'] }}"><a href="{{ route('projects.show', $featured[1]['slug']) }}" class="after:absolute after:inset-0">{{ $featured[1]['title'] }}</a></h3>
-                <p class="mt-3 max-w-[300px] pr-[74px] leading-6 sm:pr-0 {{ $featured[1]['text'] }}">{{ $featured[1]['desc'] }}</p>
+                <p class="mt-3 max-w-[300px] pr-[74px] leading-6 lg:pr-0 {{ $featured[1]['text'] }}">{{ $featured[1]['desc'] }}</p>
                 <span class="pointer-events-none absolute right-6 bottom-6 grid transition group-hover:scale-110 size-16 place-items-center rounded-full text-black {{ $featured[1]['circle'] }}">
                     <svg class="size-[18px]" aria-hidden="true"><use href="#arrow-out"/></svg>
                 </span>
@@ -220,7 +220,7 @@
                         <span class="text-sm leading-5 font-medium text-azure">Design Process</span>
                     </div>
                     <h2 class="mt-4 max-w-[460px] font-display text-[26px] leading-[1.2] font-bold text-white sm:text-[30px] lg:text-4xl lg:leading-[1.2]">
-                        From Problem Discovery<br>to Effective Solutions
+                        From Problem Discovery<br class="hidden sm:inline"> to Effective Solutions
                     </h2>
                 </div>
                 <p class="max-w-[265px] text-xs leading-[18px] text-frost-300 lg:text-right">

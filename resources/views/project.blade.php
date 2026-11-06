@@ -29,7 +29,7 @@
             <p data-reveal class="max-w-[480px] leading-6 text-ink">{{ $project['intro'] ?? $project['desc'] }}</p>
 
             @isset($project['role'])
-                <dl data-reveal class="flex gap-10 lg:flex-col lg:gap-5">
+                <dl data-reveal class="flex gap-6 sm:gap-10 lg:flex-col lg:gap-5">
                     <div>
                         <dt class="text-[13px] leading-4 font-bold text-[#a7a7a7]">ROLE</dt>
                         <dd class="mt-1 text-[15px] leading-[22px] font-medium text-primary">{{ $project['role'] }}</dd>
@@ -78,7 +78,7 @@
                     @foreach ($project['slides'] as $slide)
                         <button type="button" data-carousel-dot aria-label="Go to slide {{ $loop->iteration }}: {{ $slide['label'] }}"
                                 @if ($loop->first) aria-current="true" @endif
-                                class="h-[7px] w-[7px] rounded-full bg-azure-soft transition-all aria-[current=true]:w-7 aria-[current=true]:bg-primary"></button>
+                                class="relative h-[7px] w-[7px] rounded-full bg-azure-soft transition-all after:absolute after:-inset-x-[3px] after:-inset-y-4 aria-[current=true]:w-7 aria-[current=true]:bg-primary"></button>
                     @endforeach
                 </div>
 
@@ -95,12 +95,12 @@
     <section class="mx-auto max-w-[1080px] px-6 pt-12 lg:pt-14">
         <h2 data-reveal class="{{ $sectionHeading }}">Design System</h2>
 
-        <div class="mt-6 flex flex-col gap-6 lg:flex-row">
+        <div class="mt-6 flex flex-col gap-6 md:flex-row">
             @foreach ($project['designCards'] as $card)
                 <img data-reveal src="{{ asset($card['image']) }}" alt="{{ $project['title'] }} design system: {{ $card['label'] }}"
                      width="{{ $card['width'] }}" height="{{ $card['height'] }}" loading="lazy"
                      style="--grow: {{ $card['grow'] }}"
-                     class="h-auto w-full min-w-0 rounded-[24px] lg:w-auto lg:[flex:var(--grow)_1_0%]">
+                     class="h-auto w-full min-w-0 rounded-[24px] md:w-auto md:[flex:var(--grow)_1_0%]">
             @endforeach
         </div>
 

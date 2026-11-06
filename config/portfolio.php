@@ -5,8 +5,9 @@
 // role, type, intro, about and process are optional: a project page skips whatever is missing.
 return [
     'email' => 'mailto:tataazkia123@gmail.com',
-    'resume' => 'https://drive.google.com/file/d/1663yj5EWsfzBkmunu50M6purn_rzrgPK/view?usp=sharing',
+    'resume' => 'https://drive.google.com/file/d/1collp3ZoJiQavsHZy5sOs02avbO31qr2/view?usp=sharing',
     'linkedin' => 'https://www.linkedin.com/in/tata-azkia-azzahra/',
+    'dribbble' => 'https://dribbble.com/tataazkiaazzahra',
     'projects' => [
         'notery' => [
             'title' => 'Notery',
